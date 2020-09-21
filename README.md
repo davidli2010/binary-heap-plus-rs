@@ -1,6 +1,9 @@
-# binary-heap-plus-rs
+# binary-heap-plus2
 
 ![Rust](https://github.com/sekineh/binary-heap-plus-rs/workflows/Rust/badge.svg)
+
+This is a fork of [binary-heap-plus](https://github.com/sekineh/binary-heap-plus-rs),
+add a new generic constructor `BinaryHeap::from_vec_cmp_rebuild()`.
 
 Enhancement over Rust's `std::collections::BinaryHeap`.
 
@@ -15,7 +18,7 @@ It supports the following heaps and still maintains backward compatibility.
   - Use `BinaryHeap::new_by_key()` or `::with_capacity_by_key()`
 
 Other notable added methods are:
-- `BinaryHeap::from_vec_cmp()` and `BinaryHeap::from_vec()` for more generic construction.
+- `BinaryHeap::from_vec_cmp()`, `BinaryHeap::from_vec()` and `BinaryHeap::from_vec_cmp_rebuild()` for more generic construction.
 - `.into_iter_sorted()` which is less-surprising version of `.into_iter()`. The implementation is backported from `std`.
 
 ## MSRV (Minimum Supported Rust Version)

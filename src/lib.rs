@@ -1,3 +1,8 @@
+//! This is a fork of [binary-heap-plus](https://github.com/sekineh/binary-heap-plus-rs),
+//! add a new generic constructor `BinaryHeap::from_vec_cmp_rebuild()`.
+//!
+//! `binary-heap-plus` is recommended if there are no special requirements.
+//!
 //! This crate provides `BinaryHeap` which is backward-compatible with `std::collections::BinaryHeap`.
 //!
 //! Added features include:
@@ -11,7 +16,7 @@
 //! For max heap, `BiaryHeap::from_vec()` is the most versatile way to create a heap.
 //!
 //! ```rust
-//!     use binary_heap_plus::*;
+//!     use binary_heap_plus2::*;
 //!
 //!     // max heap
 //!     let mut h: BinaryHeap<i32> = BinaryHeap::from_vec(vec![]);
@@ -25,7 +30,7 @@
 //! Min heap is similar, but requires type annotation.
 //!
 //! ```rust
-//!     use binary_heap_plus::*;
+//!     use binary_heap_plus2::*;
 //!
 //!     // min heap
 //!     let mut h: BinaryHeap<i32, MinComparator> = BinaryHeap::from_vec(vec![]);
@@ -41,7 +46,7 @@
 //! For custom heap, `BinaryHeap::from_vec_cmp()` works in a similar way to max/min heap. The only difference is that you add the comparator closure with apropriate signature.
 //!
 //! ```rust
-//!     use binary_heap_plus::*;
+//!     use binary_heap_plus2::*;
 //!
 //!     // custom heap: ordered by second value (_.1) of the tuples; min first
 //!     let mut h = BinaryHeap::from_vec_cmp(
@@ -59,7 +64,7 @@
 //! * `BinaryHeap::from_vec_cmp(vec, cmp)`
 //!
 //! ```
-//! use binary_heap_plus::*;
+//! use binary_heap_plus2::*;
 //!
 //! // max heap (default)
 //! let mut heap: BinaryHeap<i32> = BinaryHeap::from_vec(vec![1,5,3]);

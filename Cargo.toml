@@ -1,10 +1,11 @@
 [package]
-name = "binary-heap-plus"
-version = "0.3.0"
+name = "binary-heap-plus2"
+version = "0.3.1"
 authors = ["SEKINE, Hideki <sekineh@me.com>"]
 description = "Enhanced version of std::collections::BinaryHeap that supports max, min, and custom-order heaps."
 license = "MIT"
-repository = "https://github.com/sekineh/binary-heap-plus-rs"
+repository = "https://github.com/davidli2010/binary-heap-plus-rs"
+documentation = "https://docs.rs/binary-heap-plus2/"
 readme = "README.md"
 keywords = ["binary", "heap", "priority", "queue"]
 categories = ["data-structures", "algorithms", ]

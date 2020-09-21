@@ -32,7 +32,7 @@
 //!
 //! ```
 //! use std::cmp::Ordering;
-//! use binary_heap_plus::*;
+//! use binary_heap_plus2::*;
 //! use std::usize;
 //!
 //! #[derive(Copy, Clone, Eq, PartialEq)]
@@ -155,6 +155,7 @@
 //! }
 //! ```
 
+#![allow(clippy::needless_doctest_main)]
 #![allow(missing_docs)]
 // #![stable(feature = "rust1", since = "1.0.0")]
 
@@ -192,7 +193,7 @@ use std::vec;
 /// # Examples
 ///
 /// ```
-/// use binary_heap_plus::*;
+/// use binary_heap_plus2::*;
 ///
 /// // Type inference lets us omit an explicit type signature (which
 /// // would be `BinaryHeap<i32, MaxComparator>` in this example).
@@ -420,7 +421,7 @@ impl<T: Ord> BinaryHeap<T> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     /// heap.push(3);
     /// heap.push(1);
@@ -444,7 +445,7 @@ impl<T: Ord> BinaryHeap<T> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::with_capacity(10);
     /// assert_eq!(heap.capacity(), 10);
     /// heap.push(3);
@@ -468,7 +469,7 @@ impl<T: Ord> BinaryHeap<T, MinComparator> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new_min();
     /// heap.push(3);
     /// heap.push(1);
@@ -491,7 +492,7 @@ impl<T: Ord> BinaryHeap<T, MinComparator> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::with_capacity_min(10);
     /// assert_eq!(heap.capacity(), 10);
     /// heap.push(3);
@@ -517,7 +518,7 @@ where
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new_by(|a: &i32, b: &i32| b.cmp(a));
     /// heap.push(3);
     /// heap.push(1);
@@ -540,7 +541,7 @@ where
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::with_capacity_by(10, |a: &i32, b: &i32| b.cmp(a));
     /// assert_eq!(heap.capacity(), 10);
     /// heap.push(3);
@@ -566,7 +567,7 @@ where
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new_by_key(|a: &i32| a % 4);
     /// heap.push(3);
     /// heap.push(1);
@@ -589,7 +590,7 @@ where
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::with_capacity_by_key(10, |a: &i32| a % 4);
     /// assert_eq!(heap.capacity(), 10);
     /// heap.push(3);
@@ -611,7 +612,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let heap = BinaryHeap::from(vec![1, 2, 3, 4]);
     ///
     /// // Print 1, 2, 3, 4 in arbitrary order
@@ -634,16 +635,14 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let heap = BinaryHeap::from(vec![1, 2, 3, 4, 5]);
     ///
     /// assert_eq!(heap.into_iter_sorted().take(2).collect::<Vec<_>>(), vec![5, 4]);
     /// ```
     // #[unstable(feature = "binary_heap_into_iter_sorted", issue = "59278")]
     pub fn into_iter_sorted(self) -> IntoIterSorted<T, C> {
-        IntoIterSorted {
-            inner: self,
-        }
+        IntoIterSorted { inner: self }
     }
 
     /// Returns the greatest item in the binary heap, or `None` if it is empty.
@@ -653,7 +652,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     /// assert_eq!(heap.peek(), None);
     ///
@@ -679,7 +678,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     /// assert!(heap.peek_mut().is_none());
     ///
@@ -711,7 +710,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::with_capacity(100);
     /// assert!(heap.capacity() >= 100);
     /// heap.push(4);
@@ -737,7 +736,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     /// heap.reserve_exact(100);
     /// assert!(heap.capacity() >= 100);
@@ -762,7 +761,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     /// heap.reserve(100);
     /// assert!(heap.capacity() >= 100);
@@ -780,7 +779,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap: BinaryHeap<i32> = BinaryHeap::with_capacity(100);
     ///
     /// assert!(heap.capacity() >= 100);
@@ -800,7 +799,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::from(vec![1, 3]);
     ///
     /// assert_eq!(heap.pop(), Some(3));
@@ -825,7 +824,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     /// heap.push(3);
     /// heap.push(5);
@@ -849,7 +848,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let heap = BinaryHeap::from(vec![1, 2, 3, 4, 5, 6, 7]);
     /// let vec = heap.into_vec();
     ///
@@ -871,7 +870,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     ///
     /// let mut heap = BinaryHeap::from(vec![1, 2, 4, 5, 7]);
     /// heap.push(6);
@@ -982,7 +981,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let heap = BinaryHeap::from(vec![1, 3]);
     ///
     /// assert_eq!(heap.len(), 2);
@@ -999,7 +998,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::new();
     ///
     /// assert!(heap.is_empty());
@@ -1024,7 +1023,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::from(vec![1, 3]);
     ///
     /// assert!(!heap.is_empty());
@@ -1050,7 +1049,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let mut heap = BinaryHeap::from(vec![1, 3]);
     ///
     /// assert!(!heap.is_empty());
@@ -1079,7 +1078,7 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     ///
     /// let v = vec![-10, 1, 2, 3, 3];
     /// let mut a = BinaryHeap::from(v);
@@ -1425,7 +1424,7 @@ impl<T, C: Compare<T>> IntoIterator for BinaryHeap<T, C> {
     /// Basic usage:
     ///
     /// ```
-    /// use binary_heap_plus::*;
+    /// use binary_heap_plus2::*;
     /// let heap = BinaryHeap::from(vec![1, 2, 3, 4]);
     ///
     /// // Print 1, 2, 3, 4 in arbitrary order
