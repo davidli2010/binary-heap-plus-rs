@@ -409,6 +409,14 @@ impl<T, C: Compare<T>> BinaryHeap<T, C> {
         }
         heap
     }
+
+    /// Replaces the comparator of binary heap.
+    pub fn replace_cmp(&mut self, cmp: C, rebuild: bool) {
+        self.cmp = cmp;
+        if rebuild {
+            self.rebuild();
+        }
+    }
 }
 
 impl<T: Ord> BinaryHeap<T> {

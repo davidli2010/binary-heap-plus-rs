@@ -5,6 +5,8 @@
 This is a fork of [binary-heap-plus](https://github.com/sekineh/binary-heap-plus-rs),
 add a new generic constructor `BinaryHeap::from_vec_cmp_rebuild()`.
 
+`binary-heap-plus` is recommended if there are no special requirements.
+
 Enhancement over Rust's `std::collections::BinaryHeap`.
 
 It supports the following heaps and still maintains backward compatibility.
